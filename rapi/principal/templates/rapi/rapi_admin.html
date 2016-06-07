@@ -1,0 +1,25 @@
+{% extends 'rapi/Layout.html' %}
+
+{% block principal %}
+    <div class="col-md-8 row">
+    <br>
+    <div class="col-md-offset-4">
+        <button onclick="href({% url 'reporte' %})">Generar Reportes</button>
+    </div>
+    <div class="col-md-offset-4">
+        <button onclick="href({% url 'newuser' %})">Crear Usuario</button>
+    </div>
+    <div class="col-md-offset-4">
+        <button onclick="href({% url 'busquedaA' %})">Busqueda Avanzada</button>
+    </div>
+    <div class="col-md-offset-4">
+        <button onclick="href({% url 'newpsw' %})">Restablecer Contraseña</button>
+    </div>
+    <div class="col-md-offset-8">
+        <button onclick="href({% url 'infouser' %})">Informacion de un Usuario</button>
+    </div>
+    <div class="col-md-offset-8">
+        <h3>La ventana de administración es para poder controlar de mejor manera el sistema, adquiriendo permisos mayores a los operarios, verificando sus acciones, creando reportes, creando nuevos usuarios, etc.</h3>
+    </div>
+    </div>
+{% endblock %}

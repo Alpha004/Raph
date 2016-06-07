@@ -1,0 +1,19 @@
+{% extends 'rapi/Layout.html' %}
+
+{% block principal %}
+    <div class="col-md-8 center">
+        <h3>Cambiar Contraseña</h3>
+        <label for="usuariosid">Seleccione el usuario</label><select id="usuariosid" name="usuariosname" class="form-control">
+            {% for user in users %}
+            <option id="{{ user.id }}" name="{{ user.username }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+    <form method="POST" action="{% url 'newpswAjax' %}">
+        <label for="passw1">Ingrese nueva contraseña: </label>
+        <input id="passw1" type="text">
+        <label for="passw2">Ingrese nuevamente la contraseña: </label>
+        <input id="passw2" type="text">
+        <input type="button" value="Cambiar Contraseña">
+    </form>
+    </div>
+{% endblock %}

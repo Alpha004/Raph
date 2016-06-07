@@ -1,0 +1,22 @@
+/*
+Contiene los estilos de la pagina web
+*/
+
+body{
+	position: relative;
+	height: 100%;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#fff));
+
+}
+h1{
+	position: relative;
+
+}
+h2{
+	border: 1px solid;
+	background-color: transparent;
+}
+input button{
+	margin-top: 40%
+	color: rgb(webkit-gradient(linear,from()));
+}

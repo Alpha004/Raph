@@ -1,0 +1,52 @@
+{% extends 'rapi/Layout.html' %}
+
+{% block principal %}
+    <div class="col-md-8">
+        <h3>Busqueda Avanzada del Sistema</h3>
+        <br/>
+        <form method="POST" action="{% url 'busquedaA' %}">
+            {% csrf_token %}
+        <h4>Ingrese ID del Registro</h4>
+        <input type="text" width="50px"/>
+        </form>
+    <div class="col-md-4">
+        <h5>Tiempo de la Atencion: </h5>
+        <p>{{ atencion.TiempoA }}</p>
+        <h5>Estado de la Atencion: </h5>
+        {% if atencion.Estado %}
+        <p>ATENDIDO</p>
+        {% else %}
+        <p>NO ATENDIDO</p>
+        {% endif %}
+        <h5>Nro de Cama: </h5>
+        <p>{{ atencion.NroCamaA.Nro_Cama }}</p>
+        <h5>Paciente Atendido: </h5>
+        <p>{{ atencion.NroCamaA.Id_paciente.Nombre_P }}, {{ atencion.NroCamaA.Id_paciente.Apellido_P }}</p>
+        <h5>Area de Atencion: </h5>
+        <p>{{ atencion.NroCamaA.Area.Descripcion_Area }}</p>
+        <h5>Personal que atendio: </h5>
+        <p>{{ atencion.ID_P.Nombre_P }}, {{ atencion.ID_P.Apellido_P }} </p>
+        <h5>Usuario que registro atencion: </h5>
+        <p>{{ atencion.Nombre_U.first_name }}, {{ atencion.Nombre_U.last_name}} </p>
+        <h5>Total de veces editado: </h5>
+        <p>{{ atencion.NroEdiciones.TotalE }} </p>
+        <h5>Total de veces editado: </h5>
+        <p>{{ Totalediciones }} </p>
+        <h5>Usuarios que Editaron: </h5>
+        {% for edicionU in EdicionesxUser %}
+        <p>{{ edicionU.idUsuarios.first_name }}, {{ edicionU.idUsuarios.last_name }}: {{ edicionU.TotalE }} Ediciones al registro</p>
+        {% endfor %}
+        <h5>Fue editado por ultima vez: </h5>
+        <p>{{ Last_Time }}</p>
+    </div>
+    <div class="col-md-4">
+        <h5>Descripcion:</h5>
+        <textarea rows="6">{{ atencion.DescripcionA }}</textarea>
+        <form method="post" action="{% url 'printinfo' %}" >
+        {% csrf_token %}
+        <center><input type="button" class="btn btn-default" align="middle" value="Imprimir Informacion" onclick="descargar_reporte(this)"></center>
+    </form>
+    </div>
+    </div>
+
+{% endblock %}
